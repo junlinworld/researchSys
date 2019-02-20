@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.sun.Dao.ResultDao">
+
+    <resultMap id="result" type="result">
+        <id column="result_id" property="resultId"></id>
+        <result column="result_user" property="resultUser"></result>
+        <result column="result_answer" property="resultAnswer"></result>
+        <result column="result_time" property="resultTime"></result>
+        <result column="result_questionId" property="resultQuestionId"></result>
+        <result column="result_researchId" property="resultResearchId"></result>
+    </resultMap>
+
+    <insert id="insertResult">
+        insert into result set (result_user,result_answer,result_time,result_questionId,result_researchId) values
+        (#{resultUser},#{resultAnswer},#{resultTime},#{resultQuestionId},#{resultResearchId})
+    </insert>
+
+    <delete id="deleteResultById">
+        delete from result where result_id = #{resultId}
+    </delete>
+
+    <update id="updateResult">
+        update result set
+        result_user=#{resultUser},result_answer={resultAnswer},result_time=#{resultTime},result_questionId=#{resultQuestionId},result_researchId=#{resultResearchId}
+    </update>
+
+    <select id="getResultById" resultMap="result">
+        select * from result where result_id = #{resultId};
+    </select>
+
+
+</mapper>
