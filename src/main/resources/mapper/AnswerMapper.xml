@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.sun.Dao.AnswerDao">
+    <resultMap id="answer" type="answer">
+        <id column="ans_questionId" property="questionId"></id>
+        <result column="ans_index" property="answerIndex"></result>
+        <result column="ans_title" property="answerTitle"></result>
+    </resultMap>
+
+    <insert id="insertAnswer">
+        insert into answer (ans_questionId,ans_index,ans_title) values (#{questionId},#{answerIndex},#{answerTitle});
+    </insert>
+
+    <delete id="deleteAnswerByQueId">
+        delete from answer where ans_questionId = #{ansQueId};
+    </delete>
+
+    <update id="updateAnswer">
+        update answer set
+        ans_questionId=#{answer.questionId},ans_index=#{answer.answerIndex},ans_title=#{answer.answerTitle} where
+        ans_questionId = #{answer.questionId}
+        and ans_index=#{answer.answerIndex};
+    </update>
+
+    <select id="getAnswersByQueId" resultMap="answer">
+        select * from answer where ans_questionId = #{queId};
+    </select>
+
+    <insert id="insertAnswers">
+        insert into answer (ans_questionId,ans_index,ans_title) values
+        <foreach collection="AnswerList" open="" close="" index="index" separator="," item="answer">
+            (#{answer.questionId},#{answer.answerIndex},#{answer.answerTitle})
+        </foreach>
+    </insert>
+
+
+</mapper>

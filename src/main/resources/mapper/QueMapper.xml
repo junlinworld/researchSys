@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.sun.Dao.QueDao">
+
+    <resultMap id="question" type="com.example.sun.pojo.Question">
+        <id column="que_ID" property="queId"></id>
+        <result column="que_type" property="queType"></result>
+        <result column="que_describe" property="queDescribe"></result>
+        <result column="que_researchId" property="queResearchId"></result>
+        <collection property="answers" fetchType="eager" column="que_ID"
+                    select="com.example.sun.Dao.AnswerDao.getAnswersByQueId"></collection>
+    </resultMap>
+
+    <insert id="insertQue" parameterType="com.example.sun.pojo.Question" useGeneratedKeys="true"
+            keyProperty="question.queId" keyColumn="que_ID">
+        insert into question (que_type,que_describe,que_researchId)
+        values (#{question.queType},#{question.queDescribe},#{question.queResearchId});
+    </insert>
+
+    <delete id="deleteQueById">
+        delete from question where que_ID = #{queId};
+    </delete>
+
+    <update id="updateQue" parameterType="question">
+        update question set
+        que_type=#{question.queType},que_describe=#{question.queDescribe},que_researchId=#{question.queResearchId} where
+        que_describe=#{question.queDescribe};
+    </update>
+
+    <select id="getQueById" resultMap="question">
+        select * from question where que_ID = #{queId};
+    </select>
+
+    <select id="getQueByDescribe" resultMap="question">
+        select * from question where que_describe = #{queDescribe};
+    </select>
+
+
+</mapper>
