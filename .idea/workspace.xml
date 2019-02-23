@@ -58,10 +58,10 @@
     <SUITE FILE_PATH="coverage/sun$QuestionTest_insertQue.ic" NAME="QuestionTest.insertQue Coverage Results" MODIFIED="1547429357580" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.example.sun.pojo.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/sun$SunApplication.ic" NAME="SunApplication Coverage Results" MODIFIED="1546669345156" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/sun$QuestionTest_deleteQue.ic" NAME="QuestionTest.deleteQue Coverage Results" MODIFIED="1547005015998" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.example.sun.pojo.*</FILTER>
     </SUITE>
+    <SUITE FILE_PATH="coverage/sun$SunApplication.ic" NAME="SunApplication Coverage Results" MODIFIED="1546669345156" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -345,7 +345,7 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-7" />
     <option name="width" value="634" />
     <option name="height" value="867" />
@@ -568,12 +568,12 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Spring Boot.SunApplication" />
       <item itemvalue="JUnit.QuestionTest.insertQue" />
       <item itemvalue="JUnit.QuestionTest.updateQue" />
       <item itemvalue="JUnit.ResearchTest.insertResearch" />
       <item itemvalue="JUnit.ResearchTest.updateResearch" />
       <item itemvalue="JUnit.ResultTest.insertResult" />
+      <item itemvalue="Spring Boot.SunApplication" />
     </list>
     <recent_temporary>
       <list>
