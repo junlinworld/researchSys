@@ -73,4 +73,15 @@ public class UserService extends BaseServiceImpl implements UserSerface {
     public List<User> getallUser() {
         return userDao.getAllUser();
     }
+
+    @Override
+    public User getUserByName(String userName) throws Exception {
+        User user = userDao.getUserByName(userName);
+
+        if(user == null){
+            throw new Exception("该用户不存在");
+        }
+
+        return user;
+    }
 }

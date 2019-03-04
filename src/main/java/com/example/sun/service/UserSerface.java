@@ -15,4 +15,5 @@ public interface UserSerface {
     User getUserById(int userId) throws Exception;
 
     List<User> getallUser();
+    User getUserByName(String userName) throws Exception;
 }

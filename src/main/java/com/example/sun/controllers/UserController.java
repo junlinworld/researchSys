@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import com.example.sun.common.CrosConfiguration;
 
+import javax.xml.bind.ValidationEvent;
 import java.util.Scanner;
 
 @RestController
@@ -115,5 +116,22 @@ public class UserController {
 
         return flag ? successResult : failResult;
 
+    }
+
+    @RequestMapping(value = "/getUserByName",method = RequestMethod.GET)
+    public ReturnResult getUserByName(String userName){
+        boolean flag = false;
+
+        User user1 = null;
+        try {
+            user1 = userService.getUserByName(userName);
+            successResult.setStausEmessage("获取用户成功");
+            successResult.setObject(user1);
+            flag = true;
+        } catch (Exception e) {
+            failResult.setStausEmessage(e.getMessage());
+        }
+
+        return flag?successResult:failResult;
     }
 }
