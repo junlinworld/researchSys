@@ -134,4 +134,22 @@ public class UserController {
 
         return flag?successResult:failResult;
     }
+
+    @RequestMapping(value = "/loginCheck",method = RequestMethod.POST)
+    public String loginCheck(@RequestBody User inputUser){
+        String type = "";
+
+        try {
+            User user = userService.getUserByName(inputUser.getUserName());
+            if (user.getUserPassword().equals(inputUser.getUserPassword())){
+                type = "success";
+            }else {
+                type = "fail";
+            }
+        } catch (Exception e) {
+            type = e.getMessage();
+        }
+
+        return type;
+    }
 }
