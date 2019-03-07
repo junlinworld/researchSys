@@ -7,6 +7,7 @@ import com.example.sun.result.ReturnResult;
 import com.example.sun.result.SuccessResult;
 import com.example.sun.service.impl.BaseServiceImpl;
 import com.example.sun.service.impl.UserService;
+import com.example.sun.token.JwtTokenUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import com.example.sun.common.CrosConfiguration;
@@ -136,20 +137,24 @@ public class UserController {
     }
 
     @RequestMapping(value = "/loginCheck",method = RequestMethod.POST)
-    public String loginCheck(@RequestBody User inputUser){
-        String type = "";
+    public ReturnResult loginCheck(@RequestBody User inputUser){
+        boolean flag = false;
 
         try {
             User user = userService.getUserByName(inputUser.getUserName());
             if (user.getUserPassword().equals(inputUser.getUserPassword())){
-                type = "success";
+                successResult.setStausEmessage("验证通过");
+                //调用token类方法生成token密文，放到返回类object里面发回前端，参数为userName
+                successResult.setObject(JwtTokenUtil.createToken(inputUser.getUserName()));
+//                System.out.println("密文："+JwtTokenUtil.createToken(inputUser.getUserName()));
+                flag = true;
             }else {
-                type = "fail";
+                failResult.setStausEmessage("验证失败");
             }
         } catch (Exception e) {
-            type = e.getMessage();
+            failResult.setStausEmessage(e.getMessage());
         }
 
-        return type;
+        return flag?successResult:failResult;
     }
 }
