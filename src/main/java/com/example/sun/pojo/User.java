@@ -7,7 +7,7 @@ import javax.validation.constraints.NotNull;
 
 @Alias("user")
 public class User {
-    @NotNull
+
     int userId;
     @NotBlank
     String userName;

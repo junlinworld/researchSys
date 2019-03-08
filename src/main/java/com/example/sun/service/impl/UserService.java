@@ -5,6 +5,7 @@ import com.example.sun.pojo.User;
 import com.example.sun.service.UserSerface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.sql.SQLException;
@@ -75,6 +76,7 @@ public class UserService extends BaseServiceImpl implements UserSerface {
     }
 
     @Override
+    @Cacheable("users") //把下面方法结果放到名字为user缓存当中，之后凡是调用该方法都先去缓存当中查找，频繁操作数据库,还需要到appliction启用缓存
     public User getUserByName(String userName) throws Exception {
         User user = userDao.getUserByName(userName);
 

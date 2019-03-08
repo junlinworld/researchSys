@@ -21,7 +21,7 @@ public class JwtTokenUtil {
         //签发时间
         Date istDate = new Date();
 
-        //设置过期时间
+        //设置过期时间，amount，分钟
         Calendar nowTime = Calendar.getInstance();
         nowTime.add(Calendar.MINUTE, 1);
         Date expiresDate = nowTime.getTime();
